@@ -7,8 +7,7 @@ Includeing but no limited to:
 - c
 - python
 - haskell
-- rust
 
-Hopefully this is usefull to someone.  
+Hopefully this is useful to someone.  
 
 
