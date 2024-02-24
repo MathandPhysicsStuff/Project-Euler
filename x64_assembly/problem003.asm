@@ -1,13 +1,14 @@
+;The prime factors of 13195 are 5, 7, 13 and 29.
+;What is the largest prime factor of the number 600851475143? 
 
-;Assemble and link: nasm -f elf64 problem002.asm -o problem002.o && ld problem002.o -o solution002
+;Assemble and link: nasm -f elf64 problem003.asm -o problem003.o && ld problem003.o -o solution003
 
 section .data
-    max_fib dd 4000000
-    sum dd 0
+    N dq 600851475143 ;13195
 
 section .bss
-    digitSpace resb 100 ;for printing the answer
-    digitSpacePos resb 8 ;for printing the answer
+    digitSpace resb 100 ;for printing answer
+    digitSpacePos resb 8 ;for printing answer
 
 section .text
     global _start
@@ -15,18 +16,14 @@ section .text
 _start:
     
     push rbx
-    
-    mov rbx, 1  ;seed value
-    mov rcx, 2  ;seed value
-
-    mov r8, 2
+     
+    mov rbx, [N]
+    mov rcx, 2
 
     call _while
 
-    mov rax, [sum]
-
     call _printRAX
-
+    
     pop rbx
 
     mov rax, 60
@@ -35,36 +32,38 @@ _start:
 
 _while:
     
-    mov rax, rcx ;copy rcx to rax div test
-    div r8       ;r8 is always 2
-    cmp rdx, 0   ;true if rax is divisible by 2
+    mov rax, rbx 
+    div rcx
+    cmp rdx, 0
     je _call
 
     jmp _skip
 
     _call:
-        call _add 
+        call _div
 
     _skip:
-    
-    ;r9 = temp = rbx + rcx
-    mov r9, rbx 
-    add r9, rcx 
-    
-    mov rbx, rcx ;rbx = rcx
-    mov rcx, r9  ;rcx = temp
-    
-    cmp rcx, max_fib
+
+    inc rcx
+
+    mov rax, rcx
+    mul rax
+    cmp rax, [N]
     jl _while
 
+    mov rax, rbx
+
     ret
 
-_add:
-    add [sum], rcx
+_div:
+    mov rax, rbx
+    div rcx
+    mov rbx, rax
+    mov [N], rbx
+    mov rcx, 1
     ret
- 
 
-;for printing the answer
+;for printing answer
 _printRAX:
     mov rcx, digitSpace ;moves 100 resurved bytes into rcx
     mov rbx, 10 ;10 is a new line
