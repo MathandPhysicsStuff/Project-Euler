@@ -7,6 +7,8 @@ Includeing but no limited to:
 - c
 - python
 - haskell
+- zig
+- odin
 
 Hopefully this is useful to someone.  
 
