@@ -7,7 +7,6 @@ Includeing but no limited to:
 - c
 - python
 - haskell
-- rust
 - zig
 - odin
 
