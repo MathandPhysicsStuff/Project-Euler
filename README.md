@@ -11,6 +11,7 @@ Includeing but no limited to:
 - zig
 - odin
 
-Hopefully this is useful to someone.  
+Promblems that are easier to solve by hand I will not implement in code.
 
+Hopefully this is useful to someone.  
 
