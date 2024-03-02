@@ -11,7 +11,7 @@ Includeing but no limited to:
 - zig
 - odin
 
-Promblems that are easier to solve by hand I will not implement in code.
+Problems that are easier to solve by hand I will not implement in code.
 
 Hopefully this is useful to someone.  
 
