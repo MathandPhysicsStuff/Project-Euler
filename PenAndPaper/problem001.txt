@@ -8,6 +8,46 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 
 
+From the example above we can see that the sum of the numbers divisible by 3 and less than 10 is 3 + 6 + 9.
+Factoring out 3 we get 3*(1+2+3). This is useful because there exists a formula for (1+2+3+...+n).
+
+formula: 1+2+3+...+n = n(n+1) / 2. 
+
+Quick derivation:
+Let Sn = 1+2+3+...+(n-2)+(n-3)+n
+then Sn + Sn = 1+2+3+...+(n-2)+(n-1)+n 
+             + n+(n-1)+(n-2)+...+3+2+1
+             -------------------------
+      2*Sn = (n+1)+(n+1)+...+(n+1)+(n+1) = n*(n+1)
+      
+      Sn = n*(n+1) / 2.
+
+It is hard to see in text form but if you write it out you will see you get n+1, n times.
+
+Now lets observe that for some integer N (in this case 1000 - 1 = 999) if you want the sum of
+all numbers divisible by some integers (a) (in this case 3 or 5) up to N we can just do interger divisition N / a = n
+so if (N = 999) and (a = 5) (then N/5 = 199).
+
+Now all we have to do is to use the formula to find the sum of numbers divisible 3 or 5
+then subtract the numbers divisible by 15 because they will be duplicates.
+
+n0 = 999 / 3 = 333
+n1 = 999 / 5 = 199
+n2 = 999 / 15 = 66
+
+sum0 = 3 * (n0*(n0+1) / 2) = 3 * (333*(333+1) / 2) = 166,833
+sum1 = 5 * (n1*(n1+1) / 2) = 5 * (199*(199+1) / 2) = 99,500
+sum2 = 15 * (n2*(n2+1) / 2) = 15 * (66*(66+1) / 2) = 33,165
+
+solution = sum0 + sum1 - sum2 = 166,833 + 99,500 - 33,165 = 233,168
+solution = 233,168
+
+
+
+
+
+
+
 
 
 
