@@ -1,0 +1,40 @@
+Smallest Multiple
+Problem 5
+
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10
+without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from
+1 to 20?
+
+This problem is pretty easy sense 20 is small all we have to do is keep track of how many
+primes we need.
+
+20 = 2^2 * 5^1
+19 = 19^1
+18 = 2^1 * 3^2
+17 = 17^1
+16 = 2^4
+15 = 3^1 * 5^1
+14 = 2^1 * 7^1
+13 = 13^1
+11 = 11^1
+
+No more comutation is necessary beacause all the number less than half
+are just numbers in the upper half divided by 2.
+
+solution = 2^4 + 3^2 + 5^1 + 7^1 + 11^1 + 13^1 + 17^1 + 19^1 = 232,792,560
+solution = 232792560
+
+
+
+
+
+
+
+
+
+
+
+
+
