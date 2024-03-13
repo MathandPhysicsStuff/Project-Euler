@@ -46,16 +46,59 @@ grid =  [[ 8,  2, 22, 97, 38, 15, 00, 40, 00, 75,  4,  5,  7, 78, 52, 12, 50, 77
          [86, 56, 00, 48, 35, 71, 89,  7,  5, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58],
          [19, 80, 81, 68,  5, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77,  4, 89, 55, 40],
          [ 4, 52,  8, 83, 97, 35, 99, 16,  7, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66],
-         [88, 36, 68, 87, 57, 62, 20, 72,  3, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69],
+         [88, 36, 8, 87, 57, 62, 20, 72,  3, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69],
          [ 4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18,  8, 46, 29, 32, 40, 62, 76, 36],
          [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74,  4, 36, 16],
          [20, 73, 35, 29, 78, 31, 90,  1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57,  5, 54],
          [ 1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52,  1, 89, 19, 67, 48]]
 
+products = [0, 0, 0, 0]
 
-for i in grid:
-    for j in i:
-        print(j)
+#row product
+for i in range(20):
+    for j in range(16):
+
+        temp = 1
+        for k in range(4): 
+            temp *= grid[i][j+k] 
+        
+        if temp > products[0]:
+            products[0] = temp 
+
+#column product
+for i in range(16):
+    for j in range(20):
+
+        temp = 1
+        for k in range(4): 
+            temp *= grid[i+k][j] 
+        
+        if temp > products[1]:
+            products[1] = temp 
+
+#right diagnal product
+for i in range(16):
+    for j in range(16):
+
+        temp = 1
+        for k in range(4): 
+            temp *= grid[i+k][j+k] 
+        
+        if temp > products[2]:
+            products[2] = temp 
+
+#right diagnal product
+for i in range(4, 16):
+    for j in range(4, 20):
+
+        temp = 1
+        for k in range(4): 
+            temp *= grid[i+k][j-k] 
+        
+        if temp > products[3]:
+            products[3] = temp 
+
+print("solution:", max(products))
 
 
 

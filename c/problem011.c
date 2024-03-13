@@ -110,7 +110,7 @@ int main()
     }
 
     //left diagnal product
-    for (int i = digitProdLen-1; i < 20; i++)
+    for (int i = digitProdLen-1; i < 20 - digitProdLen; i++)
     {
         for (int j = digitProdLen-1; j < 20; j++)
         {
