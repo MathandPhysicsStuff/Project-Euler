@@ -24,34 +24,45 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 #include <stdio.h>
 #include <stdint.h>
 
+#define MAX 1000000
+
+uint32_t cache[MAX];
+
+uint32_t hailstone(uint32_t n)
+{
+    return (n & 1) ? (3*n + 1) : (n >> 1);
+}
+
+
+uint32_t sequenceLength(uint32_t n)
+{
+    if (n <= 1) return 0;
+    if (n < MAX && cache[n]) return cache[n];
+
+    uint32_t temp = sequenceLength(hailstone(n)) + 1;
+    if (n < MAX) cache[n] = temp;
+    return temp;
+}
 
 int main()
 {
-    uint32_t sequenceLen = 0;
-    uint32_t maxLen = 0;
-    uint32_t collatz;
-    uint32_t n;
+    uint32_t longestSequence = 0;
+    uint32_t solution;
+    uint32_t temp;
 
-    for (int i = 1; i < 1000000; i++)
+    for (int i = 0; i < MAX; i++) 
     {
-        n = i;
-        sequenceLen = 0;
-        while (n > 1)
-        {
-            sequenceLen++;
-            n = (n & 1) ? (3*n + 1) : (n >> 1);
-        }
+        temp = sequenceLength(i);
 
-        sequenceLen++;
-        if (sequenceLen > maxLen)
+        if (temp > longestSequence)
         {
-            maxLen = sequenceLen;
-            collatz = i;
+            longestSequence = temp;
+            solution = i;
         }
     }
 
-    printf("%d, %d\n", collatz, maxLen);
-    
+    printf("%u has a Collatz Sequence of %u.\n", solution, longestSequence+1);
+
     return 0;
 }
 
