@@ -20,23 +20,19 @@ Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
 '''
+from functools import cache
 
 max = 1000000
-cache = {}
 
 def hailstone(n):
     return (3*n + 1) if (n & 1) else (n >> 1)
 
+@cache
 def sequenceLength(n):
     if n <= 1:
         return 0
-
-    if n in cache:
-        return cache[n]
     
-    temp = sequenceLength(hailstone(n)) + 1
-    cache[n] = temp
-    return temp
+    return sequenceLength(hailstone(n)) + 1
 
 longestSequence = 0
 
