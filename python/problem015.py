@@ -28,7 +28,6 @@ def latticePaths(row, col):
 def main():
     rows = 20
     cols = 20
-
     numberOfPaths = latticePaths(rows, cols)
     print(f"A {rows} x {cols} Lattice has {numberOfPaths} possible paths.")
 
