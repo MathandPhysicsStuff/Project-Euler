@@ -84,6 +84,8 @@ int main()
     uint32_t digit_sum = bignum_digitsum(N);
     printf("The sum of the digits of 2^1000 = %u\n", digit_sum);
     
+    free(N.number);
+    
     return 0;
 }
 
